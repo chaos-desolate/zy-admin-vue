@@ -6,13 +6,52 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+		"lint": "eslint --config .eslintrc.cjs --ext .js,.vue --no-cache --fix src",
+		"prettier": "prettier --config .prettierrc.cjs --write src/*.{js,vue} src/**/*.{js,vue}",
+		"prepare": "husky install"
   },
+	"lint-staged": {
+		"src/**/*.{js,vue}": [
+				"npm run prettier",
+				"npm run lint"
+		]
+	},
   "dependencies": {
-    "vue": "^3.4.37"
+    "vue": "^3.4.37",
+		"vue-router": "^4.2.5",
+		"@vueuse/core": "^10.7.0",
+		"axios": "^1.6.2",
+		"dayjs": "^1.11.10",
+		"lodash-es": "^4.17.21",
+		"nanoid": "^4.0.2",
+		"nprogress": "^0.2.0",
+		"pinia": "^2.1.7",
+		"pinia-plugin-persistedstate": "^3.1.0"
   },
   "devDependencies": {
+    "vite": "^5.4.1",
     "@vitejs/plugin-vue": "^5.1.2",
-    "vite": "^5.4.1"
+		"@commitlint/cli": "^17.8.1",
+		"@commitlint/config-conventional": "^17.8.1",
+		"autoprefixer": "^10.4.19",
+		"commitlint": "^17.8.1",
+		"eslint": "^8.53.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-prettier": "^5.0.1",
+		"eslint-plugin-vue": "^9.18.1",
+		"fast-glob": "^3.3.2",
+		"husky": "^8.0.0",
+		"less": "^4.2.0",
+		"lint-staged": "^14.0.1",
+		"postcss": "^8.4.39",
+		"prettier": "^3.0.3",
+		"rollup-plugin-visualizer": "^5.12.0",
+		"vite-plugin-compression": "^0.5.1",
+		"vite-plugin-eslint": "^1.8.1",
+		"vite-plugin-progress": "^0.0.7",
+		"vite-plugin-svg-icons": "^2.0.1",
+		"vite-plugin-vue-devtools": "^7.2.1",
+		"vite-plugin-vue-setup-extend": "^0.4.0"
   }
 }
