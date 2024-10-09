@@ -14,4 +14,8 @@ const router = createRouter({
     routes,
 })
 
+export const setupRouter = (app) => {
+    app.use(router)
+}
+
 export default router
