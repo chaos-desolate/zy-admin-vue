@@ -6,8 +6,12 @@ import createServer from './config/server'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
     const root = process.cwd()
-    const env = loadEnv(mode, root, '')
+    const viteEnv = loadEnv(mode, root, '')
     return {
+        base: viteEnv.VITE_PUBLIC_PATH,
+        build: {
+            outDir: viteEnv.VITE_OUT_DIR,
+        },
         resolve: {
             alias: {
                 '@': resolve(__dirname, 'src'),
@@ -28,7 +32,7 @@ export default defineConfig(({ mode }) => {
             },
             devSourcemap: true,
         },
-        plugins: createVitePlugins(env),
-        server: createServer(env),
+        plugins: createVitePlugins(viteEnv),
+        server: createServer(viteEnv),
     }
 })
