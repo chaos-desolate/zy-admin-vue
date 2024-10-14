@@ -1,12 +1,4 @@
 <template>
-    <!-- <a-menu
-        v-model:selectedKeys="state.selectedKeys"
-        style="width: 256px"
-        mode="inline"
-        :open-keys="state.openKeys"
-        :items="items">
-        <template #overflowedIndicator> 收缩 </template>
-    </a-menu> -->
     <a-menu
         mode="inline"
         style="width: 256px">
