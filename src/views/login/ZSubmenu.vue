@@ -1,6 +1,6 @@
 <template>
     <template
-        v-for="item in props.menuItems"
+        v-for="item in menuItems"
         :key="item.path">
         <a-sub-menu
             v-if="item.children"
@@ -11,6 +11,7 @@
             <z-submenu :menu-items="item.children"></z-submenu>
         </a-sub-menu>
         <a-menu-item
+            @click="menuItemsClick(item)"
             v-else
             :key="item.path">
             {{ item.meta.title }}
@@ -19,12 +20,25 @@
 </template>
 
 <script setup name="ZSubmenu">
-const props = defineProps({
+import { useRouter } from 'vue-router'
+
+defineProps({
     menuItems: {
         type: Array,
         required: true,
     },
 })
+
+const router = useRouter()
+
+function menuItemsClick(menuOpt) {
+    // 外链
+    if (menuOpt.meta.isLink) {
+        window.open(menuOpt.meta.isLink)
+        return
+    }
+    router.push(menuOpt.path)
+}
 </script>
 
 <style scoped lang="less"></style>

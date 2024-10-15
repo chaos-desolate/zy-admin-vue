@@ -1,12 +1,47 @@
 <template>
-    <a-menu
-        mode="inline"
-        style="width: 256px">
-        <z-submenu :menu-items="menuItems"></z-submenu>
-    </a-menu>
+    <div class="flex">
+        <!-- <a-menu
+            mode="inline"
+            class="w-[256px]">
+            <z-submenu :menu-items="menuItems"></z-submenu>
+        </a-menu> -->
+        <ul>
+            <li
+                class="h-[40px] w-[150px] flex items-center justify-center rounded hover:bg-cyan-600 hover:text-white ml-5 cursor-pointer"
+                v-for="item in menuItems"
+                :key="item.path"
+                @click="menuItemsClick(item)">
+                {{ item.meta.title }}
+            </li>
+        </ul>
+        <div class="flex-1 ml-5">
+            <a-tabs
+                v-model:activeKey="activeKey"
+                type="editable-card"
+                hideAdd>
+                <a-tab-pane
+                    v-for="item in tabsList"
+                    :key="item.path"
+                    :closable="item.close">
+                    <template #tab>
+                        <span>
+                            <apple-outlined />
+                            {{ item.title }}
+                        </span>
+                    </template>
+                </a-tab-pane>
+            </a-tabs>
+        </div>
+    </div>
 </template>
 <script setup>
-import ZSubmenu from './ZSubmenu.vue'
+import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { AppleOutlined } from '@ant-design/icons-vue'
+// import ZSubmenu from './ZSubmenu.vue'
+
+const route = useRoute()
+
 const menuItems = [
     {
         path: '/home/index',
@@ -1034,4 +1069,37 @@ const menuItems = [
         },
     },
 ]
+const tabsList = ref([])
+const activeKey = ref('1')
+
+const menuItemsClick = (menuOpt) => {
+    const isExists = tabsList.value.some((item) => item.path === menuOpt.path)
+    if (isExists) return
+    tabsList.value.push({
+        icon: menuOpt.meta.icon,
+        title: menuOpt.meta.title,
+        path: menuOpt.path,
+        name: menuOpt.name,
+        close: !menuOpt.meta.isAffix,
+    })
+}
+
+watch(
+    () => route.fullPath,
+    () => {
+        console.log()
+    }
+)
 </script>
+
+<style scoped lang="less">
+:deep(.ant-tabs-nav) {
+    &::before {
+        border: none;
+    }
+}
+:deep(.ant-tabs-nav .ant-tabs-tab) {
+    border-radius: 6px !important;
+    border-color: skyblue !important;
+}
+</style>
