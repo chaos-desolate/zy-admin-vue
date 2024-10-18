@@ -2,6 +2,7 @@ import { createPinia } from 'pinia'
 import piniaPersistedstate from 'pinia-plugin-persistedstate'
 
 const pinia = createPinia()
+
 // 持久化
 pinia.use(piniaPersistedstate)
 

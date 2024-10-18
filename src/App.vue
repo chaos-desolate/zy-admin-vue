@@ -1,10 +1,13 @@
 <template>
-    <main>
+    <a-config-provider :theme="themeStore.theme">
         <RouterView />
-    </main>
+    </a-config-provider>
 </template>
 
-<script setup></script>
+<script setup>
+import useThemeStore from '@/store/modules/theme'
+const themeStore = useThemeStore()
+</script>
 
 <style scoped>
 .logo {

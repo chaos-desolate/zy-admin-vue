@@ -33,12 +33,16 @@
             </a-tabs>
         </div>
     </div>
+    <a-checkbox v-model:checked="checked">Checkbox</a-checkbox>
+    <a-button @click="onSetColor">调试颜色</a-button>
 </template>
 <script setup>
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { AppleOutlined } from '@ant-design/icons-vue'
 // import ZSubmenu from './ZSubmenu.vue'
+import useThemeStore from '@/store/modules/theme'
+const themeStore = useThemeStore()
 
 const route = useRoute()
 
@@ -1071,6 +1075,7 @@ const menuItems = [
 ]
 const tabsList = ref([])
 const activeKey = ref('1')
+const checked = ref(false)
 
 const menuItemsClick = (menuOpt) => {
     const isExists = tabsList.value.some((item) => item.path === menuOpt.path)
@@ -1082,6 +1087,9 @@ const menuItemsClick = (menuOpt) => {
         name: menuOpt.name,
         close: !menuOpt.meta.isAffix,
     })
+}
+const onSetColor = () => {
+    themeStore.setThemeToken('colorPrimary', '#00b96b')
 }
 
 watch(
