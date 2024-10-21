@@ -12,7 +12,7 @@ const useThemeStore = defineStore({
         theme: {
             algorithm: theme.defaultAlgorithm,
             token: {
-                colorPrimary: '#F87171',
+                colorPrimary: '#52c41a',
             },
         },
     }),

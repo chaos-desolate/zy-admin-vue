@@ -1089,7 +1089,7 @@ const menuItemsClick = (menuOpt) => {
     })
 }
 const onSetColor = () => {
-    themeStore.setThemeToken('colorPrimary', '#00b96b')
+    themeStore.setThemeToken('colorPrimary', '#ff4d4f')
 }
 
 watch(

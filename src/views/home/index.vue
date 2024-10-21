@@ -1,0 +1,10 @@
+<template>
+    <div>
+        <a-empty />
+        首页
+    </div>
+</template>
+
+<script setup></script>
+
+<style scoped lang="less"></style>
