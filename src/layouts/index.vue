@@ -5,12 +5,14 @@
             collapsible
             width="256">
             <div class="logo" />
-            <a-menu
-                v-model:selectedKeys="selectedKeys"
-                theme="dark"
-                mode="inline">
-                <z-submenu :menu-items="menuItems"></z-submenu>
-            </a-menu>
+            <div class="menu">
+                <a-menu
+                    v-model:selectedKeys="selectedKeys"
+                    theme="dark"
+                    mode="inline">
+                    <z-submenu :menu-items="menuItems"></z-submenu>
+                </a-menu>
+            </div>
         </a-layout-sider>
         <Main />
     </a-layout>
@@ -1063,5 +1065,10 @@ const menuItems = [
 }
 [data-theme='dark'] .site-layout .site-layout-background {
     background: #141414;
+}
+.menu {
+    height: calc(100vh - 64px - 48px);
+    overflow: auto;
+    scrollbar-width: none;
 }
 </style>

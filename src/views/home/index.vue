@@ -1,7 +1,10 @@
 <template>
-    <div>
-        <a-empty />
-        首页
+    <div class="flex justify-center items-center w-[100%] h-[100%]">
+        <img
+            width="500px"
+            height="500px"
+            src="@/assets/images/task.png"
+            alt="" />
     </div>
 </template>
 

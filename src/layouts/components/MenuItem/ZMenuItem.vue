@@ -6,6 +6,7 @@
             v-if="item.children"
             :key="item.path">
             <template #title>
+                <StarOutlined />
                 <span>{{ item.meta.title }}</span>
             </template>
             <z-menu-item :menu-items="item.children" />
@@ -14,12 +15,14 @@
             @click="menuItemsClick(item)"
             v-else
             :key="item.path">
-            {{ item.meta.title }}
+            <StarOutlined />
+            <span>{{ item.meta.title }}</span>
         </a-menu-item>
     </template>
 </template>
 
 <script setup name="ZSubmenu">
+import { StarOutlined } from '@ant-design/icons-vue'
 import { useRouter } from 'vue-router'
 
 defineProps({
