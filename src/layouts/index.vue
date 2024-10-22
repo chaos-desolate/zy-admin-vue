@@ -3,8 +3,11 @@
         <a-layout-sider
             v-model:collapsed="collapsed"
             collapsible
-            width="256">
-            <div class="logo" />
+            width="230">
+            <div class="logo">
+                <!-- <span v-if="collapsed">A</span>
+                <span v-else>Admin</span> -->
+            </div>
             <div class="menu">
                 <a-menu
                     v-model:selectedKeys="selectedKeys"
@@ -1057,6 +1060,9 @@ const menuItems = [
 .logo {
     height: 32px;
     margin: 16px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 32px;
     background: rgba(255, 255, 255, 0.3);
 }
 

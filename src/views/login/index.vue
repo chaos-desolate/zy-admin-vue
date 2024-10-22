@@ -1,10 +1,5 @@
 <template>
     <div class="flex">
-        <!-- <a-menu
-            mode="inline"
-            class="w-[256px]">
-            <z-submenu :menu-items="menuItems"></z-submenu>
-        </a-menu> -->
         <ul>
             <li
                 class="h-[40px] w-[150px] flex items-center justify-center rounded hover:bg-cyan-600 hover:text-white ml-5 cursor-pointer"
@@ -40,7 +35,6 @@
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { AppleOutlined } from '@ant-design/icons-vue'
-// import ZSubmenu from './ZSubmenu.vue'
 import useThemeStore from '@/store/modules/theme'
 const themeStore = useThemeStore()
 
