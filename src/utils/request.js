@@ -6,7 +6,13 @@ const axiosConfig = {
     headers: {
         'Content-Type': 'application/json;charset=utf-8',
     },
-    // tra
+    transformRequest: [
+        function (data) {
+            data.userName = 'test'
+            console.log('transformRequest', data)
+            return JSON.stringify(data)
+        },
+    ],
 }
 
 class Request {
@@ -32,15 +38,29 @@ class Request {
             (error) => Promise.reject(error)
         )
     }
-    get(config) {
-        return this.instance.get(config)
+    /**
+     * Get
+     */
+    get(url, params, extraConfig = {}) {
+        return this.instance.get(url, { params, ...extraConfig })
     }
     /**
-     * post请求
-     * extraConfig 额外配置
+     * Post
      */
     post(url, params, extraConfig = {}) {
         return this.instance.post(url, params, extraConfig)
+    }
+    /**
+     * Put
+     */
+    put(url, params, extraConfig = {}) {
+        return this.instance.put(url, params, extraConfig)
+    }
+    /**
+     * Delete
+     */
+    delete(url, params, extraConfig = {}) {
+        return this.instance.delete(url, { params, ...extraConfig })
     }
 }
 
