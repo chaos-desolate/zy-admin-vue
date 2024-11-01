@@ -6,7 +6,7 @@
     "author": "chaos",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build:prod": "vite build --mode prod",
         "preview": "vite preview",
         "lint": "eslint --config .eslintrc.cjs --ext .js,.vue --no-cache --fix src",
         "prettier": "prettier --config .prettierrc.cjs --write src/*.{js,vue} src/**/*.{js,vue}",

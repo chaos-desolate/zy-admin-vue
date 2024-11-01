@@ -7,11 +7,11 @@
                     appear
                     name="fade-transform"
                     mode="out-in">
-                    <keep-alive>
-                        <component
-                            :is="Component"
-                            :key="route.fullPath" />
-                    </keep-alive>
+                    <!-- <keep-alive> -->
+                    <component
+                        :is="Component"
+                        :key="route.fullPath" />
+                    <!-- </keep-alive> -->
                 </transition>
             </router-view>
         </a-layout-content>

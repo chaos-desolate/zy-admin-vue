@@ -8,6 +8,16 @@
     </div>
 </template>
 
-<script setup></script>
+<script setup name="home">
+import request from '@/utils/request'
+import { onMounted } from 'vue'
+async function getData() {
+    const result = await request.main.post('/getPaper', { data: '123' })
+    console.log('homeResult', result)
+}
+onMounted(async () => {
+    getData()
+})
+</script>
 
 <style scoped lang="less"></style>
